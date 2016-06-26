@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>web template</title>
-	<link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
+<?php include 'header.php';?>
 	<form action="userAccept.php" method="POST">
 		Username:
 		<input type="text" name="usern" value="Enter User"><br>
