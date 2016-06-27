@@ -5,13 +5,30 @@
 	//add javascript here to add a delay
 
 	//process account credentials
-	$user = $_POST['usern'];
+	$userAcc = trim(strtolower($_POST['usern']));
 	$pass = $_POST['passw'];
 	
 	//prepared statement to connect to db table - try catch
-	include 'dbConnect.php';
+	try{
+		//include db connection
+		include 'dbConnect.php';
+
+		//encode password using secure library functions
+		include 'password.php';
+		$hash = password_hash($pass, PASSWORD_BCRYPT, array("cost" => 10)); //choose BCRYPT algorithm for hashing
+
+		//prepare statement and bind values to unnamed place holders
+		$stmt = $con->prepare("INSERT INTO userList (username, password) VALUES (?, ?)");
+		$stmt->bindParam(1, $userAcc);
+		$stmt->bindParam(2, $hash);
+		$stmt->execute();
+		echo "<p>SUCCESS</p>"; //debug test
+	}
+	catch(PDOException $e)
+	{
+		echo "ERROR: " . $e->getMessage();
+	}
 
 	//insert into db table - try catch
-
 ?>
-
+<?php include 'footer.php'?>

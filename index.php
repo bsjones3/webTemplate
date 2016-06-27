@@ -7,5 +7,4 @@
 		<input type="password" name="passw" value="Enter Pass"><br>
 		<input type="submit" value="submit">
 	</form>
-</body>
-</html>
+<?php include 'footer.php'?>
