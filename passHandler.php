@@ -1,2 +1,1 @@
-<?php
-	include 'password.php'
+<?php	include 'password.php'?>

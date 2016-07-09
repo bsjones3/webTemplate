@@ -1,13 +1,19 @@
-<?php
-	include 'header.php';
-	echo "<p><i>SUCCESS: Redirecting to home page...</i></p>";
+<?php	include 'header.php';?>
+
+	<div class="alert alert-success fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<!-- '#' is a placeholder for a link-->
+		<strong>Success!</strong> You have logged in succesfully!
+	</div>
+	<?php
+	echo "<p><i>Redirecting to home page...</i></p>";
 	//header("Location: /Applications/XAMPP/xamppfiles/htdocs/webTemplate/index.php");
 	//add javascript here to add a delay
 
 	//process account credentials
 	$userAcc = trim(strtolower($_POST['usern']));
 	$pass = $_POST['passw'];
-	
+
 	//prepared statement to connect to db table - try catch
 	try{
 		//include db connection
