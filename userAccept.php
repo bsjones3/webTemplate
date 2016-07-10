@@ -14,6 +14,8 @@
 	$userAcc = trim(strtolower($_POST['usern']));
 	$pass = $_POST['passw'];
 
+	//add logic here to further sanitize user input and check if it meets requirements
+
 	//prepared statement to connect to db table - try catch
 	try{
 		//include db connection
@@ -28,6 +30,7 @@
 		$stmt->bindParam(1, $userAcc);
 		$stmt->bindParam(2, $hash);
 		$stmt->execute(); //debug test
+		$con = null;
 	}
 	catch(PDOException $e)
 	{

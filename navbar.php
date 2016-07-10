@@ -12,7 +12,8 @@
     <!--Login/Sign-up Option-->
     <ul class="nav navbar-nav navbar-right">
       <li><a href="register.php"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
+<!-- add logic later to where if the user is loggin in then they can't see the register page.-->
