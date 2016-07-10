@@ -3,10 +3,10 @@
 	<div class="alert alert-success fade in">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<!-- '#' is a placeholder for a link-->
-		<strong>Success!</strong> You have logged in succesfully!
+		<strong>Success!</strong> You have created an account!
 	</div>
 	<?php
-	echo "<p><i>Redirecting to home page...</i></p>";
+	echo "<p><i>Redirecting to member page...</i></p>";
 	//header("Location: /Applications/XAMPP/xamppfiles/htdocs/webTemplate/index.php");
 	//add javascript here to add a delay
 
@@ -19,7 +19,7 @@
 		//include db connection
 		include 'dbConnect.php';
 
-		//encode password using secure library functions
+		//encode password fusing secure library functions
 		include 'password.php';
 		$hash = password_hash($pass, PASSWORD_BCRYPT, array("cost" => 10)); //choose BCRYPT algorithm for hashing
 
@@ -27,14 +27,16 @@
 		$stmt = $con->prepare("INSERT INTO userList (username, password) VALUES (?, ?)");
 		$stmt->bindParam(1, $userAcc);
 		$stmt->bindParam(2, $hash);
-		$stmt->execute();
-		echo "<p>SUCCESS</p>"; //debug test
+		$stmt->execute(); //debug test
 	}
 	catch(PDOException $e)
 	{
 		echo "ERROR: " . $e->getMessage();
-	}
+	}//insert into db table - try catch
 
-	//insert into db table - try catch
-?>
+	//if the session variable is set then inlcude the javascript to redirect to member page
+	if (isset($_SESSION)){    ?>
+		<script src="js/redirect.js"></script>
+	<?php }  ?>
+
 <?php include 'footer.php'?>

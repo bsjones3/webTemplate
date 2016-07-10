@@ -1,3 +1,3 @@
-<?php echo "<p>Copyright &copy; " . date("Y");?>
+ <p class="text-center">Copyright &copy; Brandon <?php echo date("Y");?>
 </body>
 </html>
